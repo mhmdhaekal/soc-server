@@ -90,7 +90,7 @@ impl PacketService for PacketServiceImpl {
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let addr: SocketAddr = "[::1]:80".parse().unwrap();
+    let addr: SocketAddr = "0.0.0.0:80".parse().unwrap();
     let url = std::env::var("DATABASE_URL").unwrap();
     let auth_token = std::env::var("DATABASE_AUTH_TOKEN").unwrap_or_else(|_| {
         println!("TURSO_AUTH_TOKEN not set, using empty token...");
