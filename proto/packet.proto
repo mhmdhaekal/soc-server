@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package packet;
+
+service PacketService {
+    rpc StreamPacket (stream Packet) returns (stream PacketResponse);
+}
+
+message Packet {
+    string packet_id = 1;
+    string source_ip = 2;
+    string destination_ip = 3;
+    int32 source_port = 4;
+    int32 destination_port = 5;
+    bytes payload = 6;
+    int64 timestamp = 7;
+    string protocol = 8;
+    int32 packet_size = 9;
+    float payload_entropy = 10;
+}
+
+message PacketResponse {
+    string packet_id = 1;
+    string message = 2;
+    int64 timestamp = 3;
+}
